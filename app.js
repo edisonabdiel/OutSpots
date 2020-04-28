@@ -7,11 +7,11 @@ const favicon      = require('serve-favicon');
 const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
-
+const path         = require('path');
 
 
 mongoose
-  .connect('mongodb://localhost/outspots', {useNewUrlParser: true})
+  .connect('mongodb://127.0.0.1:27017/outspots', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -54,7 +54,7 @@ app.locals.title = 'Express - Generated with IronGenerator';
 const index = require('./routes/index');
 app.use('/', index);
 const users = require('./routes/users')
-app.use('/', users);
+app.use('/users', users);
 
 
 module.exports = app;
