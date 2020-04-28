@@ -14,7 +14,7 @@
               name="name"
               class="form-control"
               placeholder="Enter Name"
-              value="{{ typeof name != 'undefined' ? name : '' }}"
+              value="{{#if name}}{{name}}{{/if}}"
             />
           </div>
           <div class="form-group">
@@ -25,7 +25,7 @@
               name="email"
               class="form-control"
               placeholder="Enter Email"
-              value=" {{typeof email != 'undefined' ? email : ''}} "
+              value=" {{#if name}}{{name}}{{/if}} "
             />
           </div>
           <div class="form-group">
@@ -36,7 +36,7 @@
               name="password"
               class="form-control"
               placeholder="Create Password"
-              value=" {{typeof password != 'undefined' ? password : ''}} "
+              value=" {{#if name}}{{name}}{{/if}} "
             />
           </div>
           <div class="form-group">
@@ -47,7 +47,7 @@
               name="password2"
               class="form-control"
               placeholder="Confirm Password"
-              value="{{typeof password2 != 'undefined' ? password2 : ''}} "
+              value="{{#if name}}{{name}}{{/if}} "
             />
           </div>
           <button type="submit" class="btn btn-primary btn-block">
