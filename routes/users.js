@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/User.js")
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const hbs          = require('hbs');
 
 // Login page
 router.get('/login', (req, res) => {
@@ -44,7 +45,8 @@ router.post('/register', (req, res) => {
             .then(user => {
                 if (user) {
                 //User exists already
-                    errors.push({ msg: "This email is already registered"})
+                    errors.push({ msg: "This email is already registered" })
+                    hbs.registerPartials(__dirname + '/views/partials/messages', '{{errors}}');
                     res.render('register', {
                         errors,
                         name,

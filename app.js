@@ -10,7 +10,7 @@ const logger       = require('morgan');
 const path         = require('path');
 const flash        = require('connect-flash');
 const session      = require('express-session');
-const passport = require('passport');
+const passport     = require('passport');
 
 const MongoStore = require("connect-mongo")(session);
 
@@ -61,6 +61,7 @@ app.use(session({
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
