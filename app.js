@@ -8,6 +8,13 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const flash        = require('connect-flash');
+const session      = require('express-session');
+const passport     = require('passport');
+
+const MongoStore = require("connect-mongo")(session);
+
+require('./config/passport')(passport);
 
 
 mongoose
@@ -24,7 +31,7 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
-// Middleware Setup
+// Bodyparser Set Up
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,18 +44,42 @@ app.use(require('node-sass-middleware')({
   dest: path.join(__dirname, 'public'),
   sourceMap: true
 }));
-      
+
+
+ //Express Session
+app.use(session({
+  secret: 'caesar',
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    resave: true,
+    saveUninitialized: false,
+    ttl: 24 * 60 * 60 // 1 day
+  })
+}));     
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
+//Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 
-// default value for title local
-app.locals.title = 'Express - Generated with IronGenerator';
+//Connect flash
+app.use(flash());
 
+// Global Variables/Flash Messages
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  next();
+})
 
 
 const index = require('./routes/index');
