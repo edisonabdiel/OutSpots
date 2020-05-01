@@ -6,6 +6,7 @@ const passport = require('passport');
 
 // Login page
 router.get('/login', (req, res) => {
+    console.log(req.flash('success_msg'))
     res.render('login')
 });
 
@@ -93,5 +94,6 @@ router.get('/logout', (req, res) => {
 });
 
 
+
 module.exports = router;
-    
+
