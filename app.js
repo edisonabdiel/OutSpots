@@ -11,8 +11,8 @@ const path         = require('path');
 const flash        = require('connect-flash');
 const session      = require('express-session');
 const passport     = require('passport');
+const MongoStore   = require("connect-mongo")(session);
 
-const MongoStore = require("connect-mongo")(session);
 
 require('./config/passport')(passport);
 
