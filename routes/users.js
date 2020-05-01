@@ -3,11 +3,9 @@ const router = express.Router();
 const User = require("../models/User.js")
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-const hbs          = require('hbs');
 
 // Login page
 router.get('/login', (req, res) => {
-    console.log(req.flash('success_msg'))
     res.render('login')
 });
 
@@ -18,7 +16,6 @@ router.get('/register', (req, res) => {
 
 //Register Handler
 router.post('/register', (req, res) => {
-    console.log(req.body)
     const { name, email, password, password2 } = req.body;
     let errors = [];
 //Check for required fields
@@ -46,7 +43,6 @@ router.post('/register', (req, res) => {
                 if (user) {
                 //User exists already
                     errors.push({ msg: "This email is already registered" })
-                    hbs.registerPartials(__dirname + '/views/partials/messages', '{{errors}}');
                     res.render('register', {
                         errors,
                         name,
@@ -68,12 +64,12 @@ router.post('/register', (req, res) => {
                             //Set password to hash
                             newUser.password = hash;
                             //Save the new user
-                            newUser.save()
-                                .then(user => {
-                                    req.flash('success_msg', 'You are now register and can login');
-                                    res.redirect("/dashboard");
-                                })
-                            .catch(err => console.log(err))
+                         newUser.save()
+                             .then(user => {
+                                 req.flash('success_msg', 'You are now register and can login');
+                                 res.redirect("/dashboard");
+                             })
+                             .catch(err => console.log(err));
                         }));
                 }
         });
@@ -97,4 +93,5 @@ router.get('/logout', (req, res) => {
 });
 
 
-    module.exports = router;
+module.exports = router;
+    
