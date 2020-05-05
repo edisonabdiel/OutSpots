@@ -4,6 +4,7 @@ const User = require("../models/User.js")
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
+
 // Login page
 router.get('/login', (req, res) => {
     console.log(req.flash('success_msg'))
