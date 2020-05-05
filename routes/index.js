@@ -1,27 +1,17 @@
 const express = require('express');
-const router  = express.Router();
-const passport = require("passport");
-const User = require('../models/User')
-const geoCoder = require('../config/geocoder')
+const router = express.Router();
+const { ensureAuthenticated } = require('../config/auth')
 
-/* GET home page */
-router.get('/', (req, res, next) => {
-  // geoCoder.geocode("Revaler 17 10245 Berlin").then((geoloc) => { //Dogpark.address
-  //   console.log(geoloc); 
-  // })
-  
-  res.render('Dashboard');
-});
+//Welcome Page
+router.get('/', (req, res) => 
+    res.render('welcome')
+);
 
-// show register form
-router.get('/register', (req, res) => {
-  res.render('register'); 
-});
+//Dashboard
+router.get('/dashboard', ensureAuthenticated, (req, res) =>
+    res.render('dashboard', {
+        name: req.user.name
+    })
+);
 
-//Render dashboard
-router.get('/dashboard', (req, res) => {
-  res.render('dashboard');
-});
-
-
-module.exports = router;
+module.exports = router
