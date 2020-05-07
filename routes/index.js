@@ -7,6 +7,10 @@ router.get('/', (req, res) =>
     res.render('welcome')
 );
 
+router.get('/verification', (req, res) => 
+    res.render('verification')
+);
+
 //Dashboard
 router.get('/dashboard', ensureAuthenticated, (req, res) =>
     res.render('dashboard', {
