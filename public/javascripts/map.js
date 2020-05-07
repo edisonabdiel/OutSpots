@@ -25,5 +25,5 @@ const marker = new mapboxgl.Marker()
   .setLngLat(coordinatesBerlin)
   .addTo(map);
 
-  console.log('map.js running')
+  
   
