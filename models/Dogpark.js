@@ -32,17 +32,7 @@ const DogparkSchema = new mongoose.Schema({
       default: false,
       required: false
     },
-     nextToTraffic: {
-      type: Boolean, 
-      default: false,
-      required: false
-    },
     smallDogsArea: {
-      type: Boolean, 
-      default: false,
-      required: false
-    },
-    ballPlayArea: {
       type: Boolean, 
       default: false,
       required: false
@@ -52,6 +42,11 @@ const DogparkSchema = new mongoose.Schema({
     type: String,
     required: false
   },
+  isFenced: {
+    type: Boolean,
+    required: false
+  },
+
   createdAt: {
     type: Date,
     default: Date.now()

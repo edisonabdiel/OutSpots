@@ -3,7 +3,7 @@ const NodeGeocoder = require('node-geocoder');
 const options = { 
   provider: 'opencage',
   httpAdapter: 'https',
-  apiKey: process.env.OCD_API_KEY, //'cee7c89965a24504a299788edbb9d2b6',//process.env.OCD_API_KEY,
+  apiKey: 'cee7c89965a24504a299788edbb9d2b6',//process.env.OCD_API_KEY,
   formatter: null
 };
 
