@@ -5,7 +5,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic29sYW5nZW9oYW5hIiwiYSI6ImNrOWs5cmQwcjAwMjIzZ
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/dark-v10',
-  zoom: 3,
+  zoom: 10,
   center: coordinatesBerlin
 });
 
