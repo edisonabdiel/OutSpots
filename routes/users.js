@@ -63,6 +63,7 @@ router.post('/register', (req, res) => {
                     });
                 }
                 else {
+<<<<<<< HEAD
                     const email = req.body.email
                     const password = req.body.password
                     const bcryptSalt = 10;
@@ -91,6 +92,27 @@ router.post('/register', (req, res) => {
                                 res.redirect('/verification')
                             })
                         })
+=======
+                    const newUser = new User({
+                        name,
+                        email,
+                        password
+                    });
+                     //Hash the passwords
+                     bcrypt.genSalt(10, (err, salt) =>
+                     bcrypt.hash(newUser.password, salt, (err, hash) => {
+                            if (err) throw err;
+                            //Set password to hash
+                            newUser.password = hash;
+                            //Save the new user
+                         newUser.save()
+                             .then(user => {
+                                 req.flash('success_msg', 'You are now register and can login');
+                                 res.redirect("/dashboard");
+                             })
+                             .catch(err => console.log(err));
+                        }));
+>>>>>>> 8707440e90fdeb31061c2a9dbf48a0175100f5a8
                 }
             });
     }
@@ -125,3 +147,7 @@ router.get('/logout', (req, res) => {
 
 
 module.exports = router;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8707440e90fdeb31061c2a9dbf48a0175100f5a8
