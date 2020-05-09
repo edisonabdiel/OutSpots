@@ -3,7 +3,16 @@ const router = express.Router();
 const User = require("../models/User.js")
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
+const nodemailer = require('nodemailer');
 
+//Transporter 
+let transporter = nodemailer.createTransport({
+    service: 'Gmail',
+    auth: {
+      user: 'tester123.peterpan@gmail.com',
+      pass: '89675rutitgzrvuz'
+    }
+  });
 
 // Login page
 router.get('/login', (req, res) => {
@@ -20,7 +29,7 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
     const { name, email, password, password2 } = req.body;
     let errors = [];
-//Check for required fields
+    //Check for required fields
     if (!name || !email, !password || !password2) {
         errors.push({ msg: "Please fill in all the fields" });
     }
@@ -39,42 +48,61 @@ router.post('/register', (req, res) => {
             password2
         })
     } else {
-//Validation passed
+        //Validation passed
         User.findOne({ email: email })
             .then(user => {
                 if (user) {
-                //User exists already
+                    //User exists already
                     errors.push({ msg: "This email is already registered" })
                     res.render('register', {
                         errors,
                         name,
                         email,
                         password,
-                        password2, 
+                        password2,
                     });
                 }
                 else {
-                    const newUser = new User({
-                        name,
-                        email,
-                        password
-                    });
-                     //Hash the passwords
-                     bcrypt.genSalt(10, (err, salt) =>
-                     bcrypt.hash(newUser.password, salt, (err, hash) => {
-                            if (err) throw err;
-                            //Set password to hash
-                            newUser.password = hash;
-                            //Save the new user
-                         newUser.save()
-                             .then(user => {
-                                 req.flash('success_msg', 'You are now register and can login');
-                                 res.redirect("/dashboard");
-                             })
-                             .catch(err => console.log(err));
-                        }));
+                    const email = req.body.email
+                    const password = req.body.password
+                    const bcryptSalt = 10;
+                    const token = Array.from({ length: 4 }, () => Math.floor(Math.random() * 10)).join('');
+
+                    transporter.sendMail({
+                        from: '"OutSpots Verification Team " <myawesome@project.com>',
+                        to: email,
+                        subject: 'Activate your OutSpots account',
+                        text: `Hey this is the link you need to click: http://localhost:3000/verify-email-link/${token}`,
+                        html: `Hey this is the link you need to click: http://localhost:3000/verify-email-link/${token}`
+                    }).then(() => {
+                            const salt = bcrypt.genSaltSync(bcryptSalt);
+                            const hashPass = bcrypt.hashSync(password, salt);
+
+                            let user = new User({
+                                email,
+                                password: hashPass,
+                                token: token,
+                                name
+                            })
+                        return user.save()
+                        
+                        }).then((theUser) => {
+                            req.login(theUser, () => {
+                                res.redirect('/verification')
+                            })
+                        })
                 }
-        });
+            });
+    }
+});
+
+//Verification Handler
+router.get('/verify-email-link/:token', (req, res) => {
+    if (req.user.token === req.params.token) {
+        req.user.verifiedEmail = true
+        req.user.save().then(() => {
+            res.redirect('dashboard')
+        })
     }
 });
 
@@ -94,7 +122,23 @@ router.get('/logout', (req, res) => {
     res.redirect('/users/login');
 });
 
+router.get(
+    "/auth/google",
+    passport.authenticate("google", {
+      scope: [
+        "https://www.googleapis.com/auth/userinfo.profile",
+        "https://www.googleapis.com/auth/userinfo.email",
+      ],
+    })
+);
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/dashboard",
+    failureRedirect: "/register" // here you would navigate to the classic login page
+  })
+);
+
 
 
 module.exports = router;
-

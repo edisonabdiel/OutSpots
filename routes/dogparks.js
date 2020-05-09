@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
   Dogpark.find().then((dogparksFromDB) => {
     console.log('dogparks: ' + dogparksFromDB)
     res.render('dog-parks/index', {dogparksData: dogparksFromDB});
+
   })
 });
 

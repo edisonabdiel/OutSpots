@@ -15,6 +15,7 @@ const MongoStore   = require("connect-mongo")(session);
 
 
 require('./config/passport')(passport);
+require('./config/google-auth')(passport);
 
 
 mongoose
@@ -83,6 +84,7 @@ const users = require('./routes/users')
 app.use('/users', users);
 const dogparks= require('./routes/dogparks')
 app.use("/dogparks", dogparks);
+
 
 
 module.exports = app;
