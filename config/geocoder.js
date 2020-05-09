@@ -18,3 +18,4 @@ const formatter = {
 };
 
 module.exports = geocoder;
+

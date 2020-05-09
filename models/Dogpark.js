@@ -4,7 +4,7 @@ const geoCoder = require('../config/geocoder')
 const DogparkSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: false
+    required: [true, 'Please add an name']
   },
   address: {
     type: String,
@@ -62,10 +62,6 @@ DogparkSchema.pre('save', async function (next) {
     coordinates: [geoloc[0].longitude, geoloc[0].latitude],
     formattedAddress: geoloc[0].formattedAddress
   };
-
-  //do not save address
-  this.address = undefined;
-  next();
 });
 
 const Dogpark = mongoose.model('Dogpark', DogparkSchema);

@@ -3,6 +3,8 @@
  <a href="dogparks/new" class="btn btn-outline-success mb-4">add dog park</a>
 <ul>
   {{#each dogparksData}}
-  <li>{{this.name}}//{{this.location}}</li>
+ <li> <a href='/dogparks/{{this._id}}'>{{this.name}}</a></li>
   {{/each}}
 </ul>
+
+
