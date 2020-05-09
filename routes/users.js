@@ -79,7 +79,8 @@ router.post('/register', (req, res) => {
                             const hashPass = bcrypt.hashSync(password, salt);
 
                             let user = new User({
-                                email, password: hashPass,
+                                email,
+                                password: hashPass,
                                 token: token,
                                 name
                             })
