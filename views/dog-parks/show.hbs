@@ -1,0 +1,39 @@
+
+<h2>{{dogparkData.name}} details</h2>
+
+<p>Address: {{dogparkData.address}}</p>
+<h5>Facilities :</h5>
+<ul> 
+
+{{#if dogparkData.facilities.waterSupply}}
+   <li>There is a water supply</li>
+{{else}}
+   <li>There is no water supply</li>
+{{/if}}
+
+{{#if dogparkData.facilities.seatingSpaces}}
+  <li>There are seating spaces</li>
+{{else}}
+  <li>There are no seating spaces</li>
+{{/if}}
+{{#if dogparkData.facilities.smallDogsArea}}
+  <li>There is a separated area for small dogs / playing with toys</li>
+{{else}}
+  <li>There is no separated area for small dogs</li>
+{{/if}}
+</ul>
+{{#if dogparkData.ground}}
+<p>Ground : {{dogparkData.ground}}</p>
+{{/if}}
+{{#if dogparkData.isFenced}}
+<p>The park is fenced</p>
+{{/if}}
+
+
+<a href="/dogparks/{{dogparkData._id}}/edit">Edit</a>
+<br>
+<form action="/dogparks/{{dogparkData._id}}/delete" method="POST">
+  <button type="submit">Delete</button>
+<br>
+
+<a href="/dogparks">Back to dogparks</a>

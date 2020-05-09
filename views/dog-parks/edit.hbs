@@ -1,0 +1,50 @@
+<div>
+  <h2>Edit {{dogpark.name}}</h2>
+  <div>
+    <form action="/dogparks/{{dogpark._id}}/edit" method="POST">
+      
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" value="{{dogpark.name}}" name="name" required>
+        </div>
+
+        <div>
+          <label for="location">Location:</label>
+          <input type="text" value="{{dogpark.address}}" name="address" required>
+        </div>
+
+        <div>
+          <p>Facilities :</p>
+          <div>
+            <label for="waterSupply">Water supply</label>
+            <input type="checkbox" value="{{dogpark.waterSupply}}" name="waterSupply" >
+          </div>
+
+          <div>
+            <label for="seatingSpaces">Seating spaces</label>
+            <input type="checkbox" value="{{dogpark.seatingSpaces}}" name="seatingSpaces">
+          </div>
+
+          <div>
+            <label for="smallDogsArea">Small dogs area / Separate playground</label>
+            <input type="checkbox" value="{{dogpark.smallDogsArea}}" name="smallDogsArea">
+          </div>
+        </div>
+
+        <div>
+          <label for="ground">Ground</label>
+          <input type="text" name="ground" placeholder="Sand, dirt, grass etc." value="{{dogpark.ground}}">
+        </div>
+
+        <div>
+          <label for="isFenced">Area fenced</label>
+          <input type="checkbox" value="{{dogpark.isFenced}}" name="isFenced">
+        </div>
+
+        <div>
+          <button type="submit"> Update!</button>
+        </div>
+    </form>
+    <a href="/dogparks">Back to dogparks</a>
+  </div>
+</div>

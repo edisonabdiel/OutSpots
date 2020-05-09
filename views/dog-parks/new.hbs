@@ -1,0 +1,44 @@
+<div>
+    <h1>Create a New Dogpark</h1>
+    <div>
+        <form action="/dogparks/new" method="POST">
+            <div>
+                <label for="name">Name</label>
+                <input type="text" name="name" placeholder="Name of the park">
+            </div>
+            <div>
+                <label for="location">Location</label>
+                <input type="text" name="address" placeholder="street zipcode city">
+            </div>
+            <div>
+                <p>Facilities :</p>
+                <div>
+                    <label for="waterSupply">Water supply</label>
+                    <input type="checkbox" name="waterSupply">
+                </div>
+                <div>
+                    <label for="seatingSpaces">Seating spaces</label>
+                    <input type="checkbox" name="seatingSpaces">
+                </div>
+                <div>
+                    <label for="smallDogsArea">Small dogs area / Separate playground</label>
+                    <input type="checkbox" name="smallDogsArea">
+                </div>
+            </div>
+            <div>
+                <label for="ground">Ground</label>
+                <input type="text" name="ground" placeholder="Sand, dirt, grass etc.">
+            </div>
+            <div>
+                <label for="isFenced">Area fenced</label>
+                <input type="checkbox" name="isFenced">
+            </div>
+            <div>
+                <button type="submit"> Submit!</button>
+            </div>
+        </form>
+        <a href="/dogparks">Back to dogparks</a>
+    </div>
+</div>
+
+

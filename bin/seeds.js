@@ -19,6 +19,28 @@ const dogparks = [
     },
     ground: 'dirt',
     isFenced: true
+  },
+  {
+    name: 'Hundeplatz Rummelsburg',
+    address: 'Friedrichsfelde 10319 Berlin',
+    facilities: {
+      waterSupply: true, 
+      seatingSpaces: true, 
+      smallDogsArea: true,
+    },
+    ground: 'sand',
+    isFenced: true
+  },
+  {
+    name: 'Hundeplatz Hasenheide',
+    address: 'Hasenheide 82 10967 Berlin',
+    facilities: {
+      waterSupply: true, 
+      seatingSpaces: true, 
+      smallDogsArea: false,
+    },
+    ground: 'dirt, sand',
+    isFenced: true
   }
 ];
 
