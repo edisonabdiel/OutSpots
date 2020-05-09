@@ -15,6 +15,7 @@ const MongoStore   = require("connect-mongo")(session);
 
 
 require('./config/passport')(passport);
+require('./config/google-auth')(passport);
 
 
 mongoose

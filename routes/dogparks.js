@@ -13,13 +13,13 @@ router.get('/', (req, res, next) => {
 
   Dogpark.find().then((data) => {
     console.log('dogparks: ' + data)
-    res.render('dogParcs/index', {dogparksData:data});
+    res.render('dog-parks/index', {dogparksData:data});
   })
 });
 
 
 router.get('/new', (req, res, next) => {
-    res.render('dogParcs/new');
+    res.render('dog-parks/new');
   })
 
 router.post('/new', (req, res, next) => {
