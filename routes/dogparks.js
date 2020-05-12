@@ -52,11 +52,13 @@ router.post('/new', (req, res, next) => {
   let dogpark = new Dogpark({ 
     name: req.body.name,
     address: req.body.address,
-    waterSupply: req.body.waterSupply,
-    seatingSpaces: req.body.seatingSpaces,
-    smallDogsArea: req.body.smallDogsArea,
+    facilities: {
+      waterSupply: req.body.waterSupply === "on" ? true : false,
+      seatingSpaces: req.body.seatingSpaces === "on" ? true : false,
+      smallDogsArea: req.body.smallDogsArea === "on" ? true : false,
+    },
     ground: req.body.ground,
-    isFenced: req.body.isFenced
+    isFenced: req.body.isFenced === "on" ? true : false
   })
 
   dogpark.save().then(() => {
