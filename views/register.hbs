@@ -2,7 +2,7 @@
   <div class="col-md-6 m-auto">
     <div class="card card-body">
       <h1 class="text-center mb-3">
-        <i class="fas fa-user-plus"></i> Register
+        <i class="fas fa-smile"></i> Register
       </h1>
     {{!-- Display Flash Messages --}}
       {{#each errors}}
@@ -34,7 +34,7 @@
           <input type="password" id="password2" name="password2" class="form-control" placeholder="Confirm Password"
             value="{{#if password2}}{{password2}}{{/if}} " />
         </div>
-        <a href="/users/auth/google" class="btn btn-primary btn-block">Sign in with Google</a>
+        <a href="/users/auth/google" class="btn btn-primary btn-block"><i class="fab fa-google"></i> Sign in with Google</a>
         <button type="submit" class="btn btn-primary btn-block">
           Register
         </button>
