@@ -36,6 +36,16 @@
 
 {{!-- <p class="lead mb-3">Welcome {{ name }} </p> --}}
 
+
+
+{{#each dogparksData}}
+{{#with location}}
+
+ <input hidden name="coordinates" class="stored-coordinates" value="{{coordinates}}">
+
+{{/with}}
+{{/each}}
+
 <div class="container my-3">
         <div 
             id="map" 
