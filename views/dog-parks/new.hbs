@@ -1,89 +1,64 @@
 <h1 class="display-4 text-center"><a href="/dashboard"><i class="fas fa-dog"></i></a>New Dog Park</h1>
 
-<div>
-    <div>
-        <form class="form-group" action="/dogparks/new" method="POST">
-            <div>
-                <label for="name">Name</label>
-                <input type="text" name="name" placeholder="Name of the park">
-            </div>
-            <div>
-                <label for="location">Location</label>
-                <input type="text" name="address" placeholder="street zipcode city">
-            </div>
-            <div>
-                <p>Facilities :</p>
-                <div>
-                    <label for="waterSupply">Water supply</label>
-                    <input type="checkbox" name="waterSupply">
-                </div>
-                <div>
-                    <label for="seatingSpaces">Seating spaces</label>
-                    <input type="checkbox" name="seatingSpaces">
-                </div>
-                <div>
-                    <label for="smallDogsArea">Small dogs area / Separate playground</label>
-                    <input type="checkbox" name="smallDogsArea">
-                </div>
-            </div>
-            <div>
-                <label for="ground">Ground</label>
-                <input type="text" name="ground" placeholder="Sand, dirt, grass etc.">
-            </div>
-            <div>
-                <label for="isFenced">Area fenced</label>
-                <input type="checkbox" name="isFenced">
-            </div>
-            <div>
-                <button type="submit"> Submit!</button>
-            </div>
-        </form>
-        <a href="/dogparks">Back to dogparks</a>
-    </div>
-</div>
-
 <form action="/dogparks/new" method="POST">
-  <div class="form-group" >
-    <label for="name">Park Name</label>
-    <input type="text" class="form-control" name="name" placeholder="e.g doggy park">
-  </div>
-  <div class="form-group" >
-    <label for="location">Address</label>
-    <input type="text" class="form-control" name="location" placeholder="street zipcode city">
-  </div>
-<div>
-    <p>Amenities:</p>
+    <div class="form-group">
+        <label for="name">Park Name</label>
+        <input type="text" class="form-control" name="name" placeholder="e.g doggy park">
+    </div>
+    <div class="form-group">
+        <label for="location">Address</label>
+        <input type="text" class="form-control" name="location" placeholder="street zipcode city">
+    </div>
+    <div>
+        <p>Amenities:</p>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="waterSupply">
+            <label class="form-check-label" for="waterSupply">
+                Water Supply
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="seatingSpaces">
+            <label class="form-check-label" for="seatingSpaces">
+                Seating Spaces
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="smallDogsArea">
+            <label class="form-check-label" for="smallDogsArea">
+                Smaller Dogs Area
+            </label>
+        </div>
+    </div>
     <div class="form-check">
-  <input class="form-check-input" type="radio" name="waterSupply">
-  <label class="form-check-label" for="waterSupply">
-   Water Supply
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="seatingSpaces">
-  <label class="form-check-label" for="seatingSpaces">
-   Seating Spaces
-  </label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="radio" name="smallDogsArea">
-  <label class="form-check-label" for="smallDogsArea">
-   Smaller Dogs Area
-  </label>
-</div>
-</div>
-  <div class="form-group">
-    <label for="comments">Additional Comments</label>
-    <textarea class="form-control" name="comments" rows="3"></textarea>
+            <input class="form-check-input" type="radio" name="isFenced">
+            <label class="form-check-label" for="isFenced">
+                Fanced
+            </label>
+        </div>
+    <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <label class="input-group-text" for="ground">Ground Type</label>
   </div>
-  <div>
-                <button class="btn btn-outline-secondary btn-outline-success" type="submit"> Submit!</button>
-            </div>
+  <select class="custom-select" id="inputGroupSelect01">
+    <option selected>Choose...</option>
+    <option value="text">Sand</option>
+    <option value="text">Grass</option>
+    <option value="text">Dirt</option>
+  </select>
+</div>
+    <div class="form-group">
+        <label for="comments">Additional Comments</label>
+        <textarea class="form-control" name="comments" rows="3"></textarea>
+    </div>
+    <div>
+        <button class="btn btn-outline-secondary btn-outline-success" type="submit"> Add!</button>
+    </div>
 </form>
 
 
 <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link active" href="#"><a href="/dashboard"><i class="fas fa-dog fa-2x"></i></a>
-  </li>
+    <li class="nav-item">
+        <a class="nav-link active" href="#"><a href="/dogparks"><i class="fas fa-dog fa-2x"></i></a>
+    </li>
 </ul>
