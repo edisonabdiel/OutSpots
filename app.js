@@ -19,7 +19,7 @@ require('./config/google-auth')(passport);
 
 
 mongoose
-  .connect('mongodb://127.0.0.1:27017/outspots', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
