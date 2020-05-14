@@ -1,8 +1,9 @@
+<h1 class="display-4 text-center"><a href="/dashboard"><i class="fas fa-dog"></i></a>Park Details</h1>
 
-<h2>{{dogparkData.name}} details</h2>
+<h2>{{dogparkData.name}}</h2>
 
 <p>Address: {{dogparkData.address}}</p>
-<h5>Facilities :</h5>
+<h5>Amenities :</h5>
 <ul> 
 
 {{#if dogparkData.facilities.waterSupply}}
@@ -29,11 +30,15 @@
 <p>The park is fenced</p>
 {{/if}}
 
+<nav class="nav nav-pills nav-fill">
+<button type="button" class="btn btn-outline-warning" href="/dogparks/{{dogparkData._id}}/edit">Edit</button>
 
-<a href="/dogparks/{{dogparkData._id}}/edit">Edit</a>
-<br>
 <form action="/dogparks/{{dogparkData._id}}/delete" method="POST">
-  <button type="submit">Delete</button>
-<br>
+  <button class="btn btn-outline-danger" type="submit">Delete</button>
+  </nav>
 
-<a href="/dogparks">Back to dogparks</a>
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link active" href="#"><a href="/dogparks"><i class="fas fa-dog fa-2x"></i></a>
+    </li>
+</ul>
