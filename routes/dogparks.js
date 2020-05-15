@@ -39,7 +39,6 @@ router.get('/:id/edit', (req, res, next) => {
 
   Dogpark.findById(dogparkID)
     .then(dogpark => {
-      console.log('blabla :', dogpark)
       res.render('dog-parks/edit', {dogpark});
     })
 });
