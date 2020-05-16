@@ -31,34 +31,28 @@
         </div>
     </div>
     <div class="form-check">
-            <input class="form-check-input" type="radio" name="isFenced">
-            <label class="form-check-label" for="isFenced">
-                Fanced
-            </label>
+        <input class="form-check-input" type="radio" name="isFenced">
+        <label class="form-check-label" for="isFenced">
+            Fanced
+        </label>
+    </div>
+    <form method="POST">
+        <div class="form-group">
+            <label for="ground">Ground Type</label>
+            <input type="text" class="form-control" name="ground" required placeholder="e.g dirt, sand, grass">
         </div>
-    <div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <label class="input-group-text" for="ground">Ground Type</label>
-  </div>
-  <select class="custom-select" id="inputGroupSelect01">
-    <option selected>Choose...</option>
-    <option value="text">Sand</option>
-    <option value="text">Grass</option>
-    <option value="text">Dirt</option>
-  </select>
-</div>
-    <div class="form-group">
-        <label for="comments">Additional Comments</label>
-        <textarea class="form-control" name="comments" rows="3"></textarea>
-    </div>
-    <div>
-        <button class="btn btn-outline-secondary btn-outline-success" type="submit"> Add!</button>
-    </div>
-</form>
+        <div class="form-group">
+            <label for="comments">Additional Comments</label>
+            <textarea class="form-control" name="comments" rows="3"></textarea>
+        </div>
+        <div>
+            <button class="btn btn-outline-secondary btn-outline-success" type="submit"> Add!</button>
+        </div>
+    </form>
 
 
-<ul class="nav justify-content-end">
-    <li class="nav-item">
-        <a class="nav-link active" href="#"><a href="/dogparks"><i class="fas fa-dog fa-2x"></i></a>
-    </li>
-</ul>
+    <ul class="nav justify-content-end">
+        <li class="nav-item">
+            <a class="nav-link active" href="#"><a href="/dogparks"><i class="fas fa-dog fa-2x"></i></a>
+        </li>
+    </ul>

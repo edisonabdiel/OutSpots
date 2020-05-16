@@ -72,8 +72,8 @@ router.post('/register', (req, res) => {
                         from: '"OutSpots Verification Team " <myawesome@project.com>',
                         to: email,
                         subject: 'Activate your OutSpots account',
-                        text: `Hey this is the link you need to click: http://localhost:3000/verify-email-link/${token}`,
-                        html: `Hey this is the link you need to click: http://localhost:3000/verify-email-link/${token}`
+                        text: `Hey this is the link you need to click: ${process.env.EMAIL_LINK}${token}`,
+                        html: `Hey this is the link you need to click:${process.env.EMAIL_LINK}${token}`
                     }).then(() => {
                             const salt = bcrypt.genSaltSync(bcryptSalt);
                             const hashPass = bcrypt.hashSync(password, salt);
