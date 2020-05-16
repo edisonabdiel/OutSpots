@@ -8,6 +8,7 @@ const map = new mapboxgl.Map({
   center: coordinatesRevalerPark
 });
 
+//switch styles of the map 
 const layerList = document.getElementById('menu');
 const inputs = layerList.getElementsByTagName('input');
 
@@ -20,49 +21,17 @@ for (let i = 0; i < inputs.length; i++) {
   inputs[i].onclick = switchLayer;
 }
 
+
 const markerRevalerPark = new mapboxgl.Marker()
   .setLngLat(coordinatesRevalerPark)
   .addTo(map);
 
-
-
-  
-
-//const coordList = document.getElementById('stored-coordinates');
-//const inputs = coordList.getElementsByTagName('input');
-
-// function getInputsByValue(value)
-// {
-//     let allInputs = document.getElementsByTagName("input");
-//     let results = [];
-//     for(let i=0; i < allInputs.length ; i++)
-//         if(allInputs[i].value == value)
-//             results.push(allInputs[i]);
-//             console.log(allInputs)
-//     return results;
-// }
-
-// for (let i = 0; i < inputs.length; i++) {
-//   new mapboxgl.Marker()
-//   .setLngLat(getInputsByValue(inputs[i]))
-//   .addTo(map);
-// }
-
-
-
-// for (let i = 0; i < arrayOfCoordinates.length; i++) {
-//   new mapboxgl.Marker()
-//   .setLngLat(arrayOfCoordinates[i])
-//   .addTo(map);
-//   console.log("array :", arrayOfCoordinates[i])
-// }
-
 Array.from(document.querySelectorAll('.stored-coordinates')).forEach(function(element) {
       console.log(`element.value: ${element.value}`)
       let lngLatString = element.value
-      let lngLatArry = lngLatString.split(',').map((x) => Number(x))
+      let lngLatArray = lngLatString.split(',').map((x) => Number(x))
       new mapboxgl.Marker()
-      .setLngLat(lngLatArry)
+      .setLngLat(lngLatArray)
       .addTo(map);
     })
 
