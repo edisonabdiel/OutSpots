@@ -22,17 +22,17 @@
 {{else}}
   <li>There is no separated area for small dogs</li>
 {{/if}}
+{{#if dogparkData.isFenced}}
+<li>The park is fenced</li>
+{{/if}}
 </ul>
 {{#if dogparkData.ground}}
 <p>Ground : {{dogparkData.ground}}</p>
 {{/if}}
-{{#if dogparkData.isFenced}}
-<p>The park is fenced</p>
-{{/if}}
 
 <nav class="nav nav-pills nav-fill">
-<button type="button" class="btn btn-outline-warning" href="/dogparks/{{dogparkData._id}}/edit">Edit</button>
-
+{{!-- <button type="button" class="btn btn-outline-warning" href="/dogparks/{{dogparkData._id}}/edit">Edit</button> --}}
+<a href="/dogparks/{{dogparkData._id}}/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
 <form action="/dogparks/{{dogparkData._id}}/delete" method="POST">
   <button class="btn btn-outline-danger" type="submit">Delete</button>
   </nav>

@@ -8,64 +8,30 @@ const map = new mapboxgl.Map({
   center: coordinatesRevalerPark
 });
 
+//switch styles of the map 
 const layerList = document.getElementById('menu');
-// const inputs = layerList.getElementsByTagName('input');
+const inputs = layerList.getElementsByTagName('input');
 
-// function switchLayer(layer) {
-//   const layerId = layer.target.id;
-//   map.setStyle('mapbox://styles/mapbox/' + layerId);
-// }
+function switchLayer(layer) {
+  const layerId = layer.target.id;
+  map.setStyle('mapbox://styles/mapbox/' + layerId);
+}
 
-// for (let i = 0; i < inputs.length; i++) {
-//   inputs[i].onclick = switchLayer;
-// }
+for (let i = 0; i < inputs.length; i++) {
+  inputs[i].onclick = switchLayer;
+}
 
-const markerRevalerPark = new mapboxgl.Marker()
-  .setLngLat(coordinatesRevalerPark)
-  .addTo(map);
+//Add a marker at the location of every park in the database
+Array.from(document.querySelectorAll('.stored-coordinates')).forEach(function(element) {
+      console.log(`element.value: ${element.value}`)
+      let lngLatString = element.value
+      let lngLatArray = lngLatString.split(',').map((x) => Number(x))
+      new mapboxgl.Marker()
+      .setLngLat(lngLatArray)
+      .addTo(map);
+    })
 
-
-
-  
-
-// const coordList = document.getElementById('stored-coordinates');
-// const inputs = coordList.getElementsByTagName('input');
-
-// function getInputsByValue(value)
-// {
-//     let allInputs = document.getElementsByTagName("input");
-//     let results = [];
-//     for(let i=0; i < allInputs.length ; i++)
-//         if(allInputs[i].value == value)
-//             results.push(allInputs[i]);
-//             console.log(allInputs)
-//     return results;
-// }
-
-// for (let i = 0; i < inputs.length; i++) {
-//   new mapboxgl.Marker()
-//   .setLngLat(getInputsByValue(inputs[i]))
-//   .addTo(map);
-// }
-
-
-
-// for (let i = 0; i < arrayOfCoordinates.length; i++) {
-//   new mapboxgl.Marker()
-//   .setLngLat(arrayOfCoordinates[i])
-//   .addTo(map);
-//   console.log("array :", arrayOfCoordinates[i])
-// }
-
-// Array.from(document.querySelectorAll('.stored-coordinates')).forEach(function(element) {
-//       console.log(`element: ${element}`)
-//       new mapboxgl.Marker()
-//       .setLngLat(element)
-//       .addTo(map);
-//     })
-
-  
-  // Add geolocate control to the map.
+// Add geolocate control to the map.
 map.addControl(
   new mapboxgl.GeolocateControl({
     positionOptions: {
