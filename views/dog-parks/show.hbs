@@ -31,7 +31,9 @@
 {{/if}}
 
 <nav class="nav nav-pills nav-fill">
-<a href="/dogparks/{{dogparkData._id}}/edit">Edit</a>
+{{!-- <a href="/dogparks/{{dogparkData._id}}/edit">Edit</a> --}}
+<a href="/dogparks/{{dogparkData._id}}/edit" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit</a>
+{{!-- <button type="button" class="btn btn-outline-warning" href="/dogparks/{{dogparkData._id}}/edit">Edit</button> --}}
 
 <form action="/dogparks/{{dogparkData._id}}/delete" method="POST">
   <button class="btn btn-outline-danger" type="submit">Delete</button>
