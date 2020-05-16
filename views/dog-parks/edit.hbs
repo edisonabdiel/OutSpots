@@ -1,54 +1,49 @@
+<h1 class="display-4 text-center"><a href="/dashboard"><i class="fas fa-dog"></i></a>Edit</h1>
 <div>
-  <h2>Edit {{dogpark.name}}</h2>
+  <h3>{{dogpark.name}}</h3>
   <div>
     <form action="/dogparks/{{dogpark._id}}/edit" method="POST">
-      
-        <div>
-          <label for="name">Name:</label>
-          <input type="text" value="{{dogpark.name}}" name="name" required>
-        </div>
+      <div class="form-group">
+        <label for="name">Park Name</label>
+        <input type="text" class="form-control" value="{{dogpark.name}}" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="location">Park Location</label>
+        <input type="text" class="form-control" value="{{dogpark.address}}" name="address" required>
+      </div>
+    </form>
+    <div>
+      <p>Amenities :</p>
+      <div>
+        <label for="waterSupply">Water supply</label>
+        <input type="checkbox" value="{{dogpark.waterSupply}}" name="waterSupply">
+      </div>
 
-        <div>
-          <label for="location">Location:</label>
-          <input type="text" value="{{dogpark.address}}" name="address" required>
-        </div>
-
-        <div>
-          <p>Facilities :</p>
-          <div>
-            <label for="waterSupply">Water supply</label>
-            <input type="checkbox" name="waterSupply" >
-          </div>
-
-          <div>
-            <label for="seatingSpaces">Seating spaces</label>
-            <input type="checkbox" name="seatingSpaces">
-          </div>
-
-          <div>
-            <label for="smallDogsArea">Small dogs area / Separate playground</label>
-            <input type="checkbox" name="smallDogsArea">
-          </div>
-        </div>
-
-        <div>
-          <label for="ground">Ground</label>
-          <input type="text" name="ground" placeholder="Sand, dirt, grass etc." value="{{dogpark.ground}}">
-        </div>
-
-        <div>
-          <label for="isFenced">Area fenced</label>
-          <input type="checkbox" name="isFenced">
-        </div>
-
-        <div>
-          <button type="submit"> Update!</button>
-        </div>
+      <div>
+        <label for="seatingSpaces">Seating spaces</label>
+        <input type="checkbox" value="{{dogpark.seatingSpaces}}" name="seatingSpaces">
+      </div>
+      <div>
+        <label for="smallDogsArea">Small dogs area / Separate playground</label>
+        <input type="checkbox" value="{{dogpark.smallDogsArea}}" name="smallDogsArea">
+      </div>
+    </div>
+    <div>
+      <label for="isFenced">Area fenced</label>
+      <input type="checkbox" value="{{dogpark.isFenced}}" name="isFenced">
+    </div>
+    <form method="POST">
+      <div class="form-group">
+        <label for="ground">Ground Type</label>
+        <input type="text" class="form-control" name="ground" required placeholder="e.g dirt, sand, grass">
+      </div>
+      <div>
+        <button type="button" class="btn btn-outline-success">Update!</button>
+      </div>
     </form>
     <a href="/dogparks">Back to dogparks</a>
   </div>
 </div>
-
 <ul class="nav justify-content-end">
   <li class="nav-item">
     <a class="nav-link active" href="#"><a href="/dashboard"><i class="fas fa-dog fa-2x"></i></a>
