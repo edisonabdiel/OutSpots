@@ -21,11 +21,7 @@ for (let i = 0; i < inputs.length; i++) {
   inputs[i].onclick = switchLayer;
 }
 
-
-const markerRevalerPark = new mapboxgl.Marker()
-  .setLngLat(coordinatesRevalerPark)
-  .addTo(map);
-
+//Add a marker at the location of every park in the database
 Array.from(document.querySelectorAll('.stored-coordinates')).forEach(function(element) {
       console.log(`element.value: ${element.value}`)
       let lngLatString = element.value
@@ -35,8 +31,7 @@ Array.from(document.querySelectorAll('.stored-coordinates')).forEach(function(el
       .addTo(map);
     })
 
-  
-  // Add geolocate control to the map.
+// Add geolocate control to the map.
 map.addControl(
   new mapboxgl.GeolocateControl({
     positionOptions: {
