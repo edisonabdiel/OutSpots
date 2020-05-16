@@ -1,58 +1,44 @@
-<h1 class="display-4 text-center"><a href="/dashboard"><i class="fas fa-dog"></i></a>New Dog Park</h1>
+<h1 class="display-4 text-center"><a href="/dashboard"><i class="fas fa-dog"></i></a>Park Details</h1>
 
-<form action="/dogparks/new" method="POST">
-    <div class="form-group">
-        <label for="name">Park Name</label>
-        <input type="text" class="form-control" name="name" placeholder="e.g doggy park">
-    </div>
-    <div class="form-group">
-        <label for="location">Address</label>
-        <input type="text" class="form-control" name="location" placeholder="street zipcode city">
-    </div>
-    <div>
-        <p>Amenities:</p>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="waterSupply">
-            <label class="form-check-label" for="waterSupply">
-                Water Supply
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="seatingSpaces">
-            <label class="form-check-label" for="seatingSpaces">
-                Seating Spaces
-            </label>
-        </div>
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="smallDogsArea">
-            <label class="form-check-label" for="smallDogsArea">
-                Smaller Dogs Area
-            </label>
-        </div>
-    </div>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="isFenced">
-        <label class="form-check-label" for="isFenced">
-            Fanced
-        </label>
-    </div>
-    <form method="POST">
-        <div class="form-group">
-            <label for="ground">Ground Type</label>
-            <input type="text" class="form-control" name="ground" required placeholder="e.g dirt, sand, grass">
-        </div>
-        <div class="form-group">
-            <label for="comments">Additional Comments</label>
-            <textarea class="form-control" name="comments" rows="3"></textarea>
-        </div>
-        <div>
-            <button class="btn btn-outline-secondary btn-outline-success" type="submit"> Add!</button>
-        </div>
-    </form>
+<h2>{{dogparkData.name}}</h2>
 
+<p>Address: {{dogparkData.address}}</p>
+<h5>Amenities :</h5>
+<ul> 
 
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-            <a class="nav-link active" href="#"><a href="/dogparks"><i class="fas fa-dog fa-2x"></i></a>
-        </li>
-    </ul>
+{{#if dogparkData.facilities.waterSupply}}
+   <li>There is a water supply</li>
+{{else}}
+   <li>There is no water supply</li>
+{{/if}}
+
+{{#if dogparkData.facilities.seatingSpaces}}
+  <li>There are seating spaces</li>
+{{else}}
+  <li>There are no seating spaces</li>
+{{/if}}
+{{#if dogparkData.facilities.smallDogsArea}}
+  <li>There is a separated area for small dogs / playing with toys</li>
+{{else}}
+  <li>There is no separated area for small dogs</li>
+{{/if}}
+</ul>
+{{#if dogparkData.ground}}
+<p>Ground : {{dogparkData.ground}}</p>
+{{/if}}
+{{#if dogparkData.isFenced}}
+<p>The park is fenced</p>
+{{/if}}
+
+<nav class="nav nav-pills nav-fill">
+<button type="button" class="btn btn-outline-warning" href="/dogparks/{{dogparkData._id}}/edit">Edit</button>
+
+<form action="/dogparks/{{dogparkData._id}}/delete" method="POST">
+  <button class="btn btn-outline-danger" type="submit">Delete</button>
+  </nav>
+
+<ul class="nav justify-content-end">
+    <li class="nav-item">
+        <a class="nav-link active" href="#"><a href="/dogparks"><i class="fas fa-dog fa-2x"></i></a>
+    </li>
+</ul>
