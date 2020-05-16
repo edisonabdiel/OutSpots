@@ -9,16 +9,16 @@ const map = new mapboxgl.Map({
 });
 
 const layerList = document.getElementById('menu');
-// const inputs = layerList.getElementsByTagName('input');
+const inputs = layerList.getElementsByTagName('input');
 
-// function switchLayer(layer) {
-//   const layerId = layer.target.id;
-//   map.setStyle('mapbox://styles/mapbox/' + layerId);
-// }
+function switchLayer(layer) {
+  const layerId = layer.target.id;
+  map.setStyle('mapbox://styles/mapbox/' + layerId);
+}
 
-// for (let i = 0; i < inputs.length; i++) {
-//   inputs[i].onclick = switchLayer;
-// }
+for (let i = 0; i < inputs.length; i++) {
+  inputs[i].onclick = switchLayer;
+}
 
 const markerRevalerPark = new mapboxgl.Marker()
   .setLngLat(coordinatesRevalerPark)
@@ -28,8 +28,8 @@ const markerRevalerPark = new mapboxgl.Marker()
 
   
 
-// const coordList = document.getElementById('stored-coordinates');
-// const inputs = coordList.getElementsByTagName('input');
+//const coordList = document.getElementById('stored-coordinates');
+//const inputs = coordList.getElementsByTagName('input');
 
 // function getInputsByValue(value)
 // {
@@ -57,12 +57,14 @@ const markerRevalerPark = new mapboxgl.Marker()
 //   console.log("array :", arrayOfCoordinates[i])
 // }
 
-// Array.from(document.querySelectorAll('.stored-coordinates')).forEach(function(element) {
-//       console.log(`element: ${element}`)
-//       new mapboxgl.Marker()
-//       .setLngLat(element)
-//       .addTo(map);
-//     })
+Array.from(document.querySelectorAll('.stored-coordinates')).forEach(function(element) {
+      console.log(`element.value: ${element.value}`)
+      let lngLatString = element.value
+      let lngLatArry = lngLatString.split(',').map((x) => Number(x))
+      new mapboxgl.Marker()
+      .setLngLat(lngLatArry)
+      .addTo(map);
+    })
 
   
   // Add geolocate control to the map.

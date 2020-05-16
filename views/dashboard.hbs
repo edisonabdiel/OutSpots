@@ -41,7 +41,7 @@
 {{#each dogparksData}}
 {{#with location}}
 
- <input hidden id="stored-coordinates" name="coordinates" value="[{{coordinates}}]">
+ <input class="stored-coordinates" name="coordinates" value="{{coordinates}}">
 
 {{/with}}
 {{/each}}
@@ -52,7 +52,7 @@
             style="width: 100%; height: 650px; border-radius: 5px;">
 
         </div>
-        {{!-- <div hidden id="menu">
+        <div id="menu">
             <input
             id="dark-v10"
             type="radio"
@@ -67,7 +67,7 @@
             <label for="outdoors">Outdoors</label>
             <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" />
             <label for="satellite">Satellite</label>
-            </div> --}}
+            </div>
     </div>
 
 <ul class="nav justify-content-end">
