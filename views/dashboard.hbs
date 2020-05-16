@@ -36,13 +36,23 @@
 
 {{!-- <p class="lead mb-3">Welcome {{ name }} </p> --}}
 
+
+
+{{#each dogparksData}}
+{{#with location}}
+
+ <input hidden id="stored-coordinates" name="coordinates" value="[{{coordinates}}]">
+
+{{/with}}
+{{/each}}
+
 <div class="container my-3">
         <div 
             id="map" 
             style="width: 100%; height: 650px; border-radius: 5px;">
 
         </div>
-        <div id="menu">
+        {{!-- <div hidden id="menu">
             <input
             id="dark-v10"
             type="radio"
@@ -57,7 +67,7 @@
             <label for="outdoors">Outdoors</label>
             <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" />
             <label for="satellite">Satellite</label>
-            </div>
+            </div> --}}
     </div>
 
 <ul class="nav justify-content-end">
